@@ -1,11 +1,12 @@
 # build tohora from source
-FROM balenalib/%%BALENA_MACHINE_NAME%%-golang:1.15 as builder
+# FROM balenalib/%%BALENA_MACHINE_NAME%%-golang:1.15 as builder
+FROM balenalib/raspberrypi3-golang:1.15 as builder
 
 RUN go get -d -v github.com/mozz100/tohora/...
 
 WORKDIR /go/src/github.com/mozz100/tohora
 
-RUN go build 
+RUN go build
 
 
 FROM balenablocks/browser:V1
